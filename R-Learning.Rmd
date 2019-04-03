@@ -1,11 +1,109 @@
 ---
-title: "Rlearning"
+title: "Learning R by Lynda.com"
 author: "Zahra Khoshmanesh"
 date: "April 2, 2019"
 output: html_document
 ---
 
+## chapter 2
+
 ```{r}
+
+2 + 2  # Basic math
+
+1:100  # Prints numbers 1 to 100 across several lines
+
+print("Hello World!")  # Prints "Hello World" in console
+
+# Variables
+x <- 1:5  # Put the numbers 1-5 in the variable x
+x  # Displays the values in x
+y <- c(6, 7, 8, 9, 10)  # Puts the numbers 6-10 in y
+y  # Displays y
+x + y  # Adds corresponding elements in x and y
+x * 2  # Multiplies each element in x by 2
+
+```
+
+```{r}
+
+x <- 0:10  # Assigns number 0 through 10 to x
+x  # Prints contents of x in console
+
+y <- c(5, 4, 1, 6, 7, 2, 2, 3, 2, 8)  # Assigns values to y
+y  # Prints y to console
+
+ls()  # List objects
+
+# CSV FILES
+# R converts missing to "NA"
+# Don't have to specify delimiters for missing data
+# because CSV means "comma separated values"
+# "header = T" means the first line is a header
+# This first one will not work because of the backslashes
+sn.csv <- read.csv("data\social_network.csv", header = T)
+# Need to either double up the backslashes...
+sn.csv <- read.csv("data\\social_network.csvv", header = T)
+# Or replace with forward slashes
+sn.csv <- read.csv("data/social_network.csv", header = T)
+str(sn.csv)
+
+# SPSS FILES
+# Saved as .csv in SPSS
+sn.spss.csv <- read.csv("C:\\Users\\Barton Poulson\\Desktop\\social_network_spss.csv", header = T)
+str(sn.spss.csv)
+
+# Using package "foreign"
+# Gets warnings but no errors
+install.packages("foreign")
+library(foreign)
+sn.spss.f <- read.spss("C:\\Users\\Barton Poulson\\Desktop\\social_network.sav", to.data.frame=T, use.value.labels=T)
+str(sn.spss.f)
+```
+
+```{r}
+# Up and Running with R
+# Ex02_06
+
+# Lists of packages
+# Opens CRAN Task Views in browser
+browseURL("http://cran.r-project.org/web/views/")
+# Opens "Available CRAN Packages By Name" (from UCLA mirror)
+browseURL("http://cran.stat.ucla.edu/web/packages/available_packages_by_name.html")
+library()  # Brings up editor list of available packages
+search()  # Shows packages that are currently active
+
+# To install and use packages
+# Can use Tools > Install Packages
+# Can use Packages window
+# Or can use scripts
+
+# Downloads package from CRAN and installs in R
+install.packages("psych")
+# Make package available; preferred for loading in scripts
+library("psych")
+# Preferred for loading in functions and packages
+require("psych")
+# Brings up documentation in editor window
+library(help = "psych") 
+
+# Vignettes
+# Brings up list of vignettes (examples) in editor window
+vignette(package = "psych")  
+# Open web page with hyperlinks for vignette PDFs etc.
+browseVignettes(package = "psych")  
+vignette()  # Brings up list of all vignettes
+browseVignettes()  # HTML for all vignettes
+
+# Update packages
+# In RStudio, Tools > Check for Package Updates
+update.packages()  # Checks for updates; do periodically
+
+# Removing packages
+# By default, all installed packages are removed when R quits
+# Can also manually uncheck in Packages window
+# Or can use this code
+detach("package:psych", unload=TRUE)
 
 ```
 
